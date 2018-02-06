@@ -11,8 +11,11 @@
 
 <script>
 export default{
-    props:['items'],
+    //props:['items'],
     computed:{
+        items(){
+            return this.$store.getters.getcart
+        },
         totalPrice(){
             var total=0
             this.items.forEach(item  => {

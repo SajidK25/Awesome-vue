@@ -26,7 +26,8 @@ export default{
     },
     methods:{
         removeFromCart(index){
-            this.$emit('rmFrCart',index)
+            //this.$emit('rmFrCart',index)
+            this.$store.commit('removeItem',index)
         }
     }
    

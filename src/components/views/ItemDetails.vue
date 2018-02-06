@@ -8,6 +8,7 @@
       <h4>{{ item.item.title }}</h4>
       <p>{{ item.description }}</p>
       <p>{{ item.item.price }}</p>
+      <button @click="addToCart(item)" class="btn btn-primary">+ Add</button>
     </div>
   </div>
   <h3 v-else>Loading .....</h3>
@@ -31,8 +32,12 @@ export default {
       Axios.get('http://localhost:3020/item/'+this.$route.params.id)
       .then(response=>{
         self.item=response.data
+        console.log(response.data)
         
       })
+    },
+    addToCart(item){
+      this.$store.commit('addToCart',item)
     }
   }
 

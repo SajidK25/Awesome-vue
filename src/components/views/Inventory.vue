@@ -25,7 +25,12 @@ export default{
   data(){
     return{
       loading:true,
-      items:[]
+      //items:[]
+    }
+  },
+  computed:{
+    items(){
+      return this.$store.getters.getInventory
     }
   },
   mounted(){
@@ -41,7 +46,8 @@ export default{
         var self=this
         Axios.get('http://localhost:3020/items').then(response=>{
           setTimeout(function(){
-            self.items=response.data
+            //self.items=response.data
+            self.$store.commit('setInventory',response.data)
             self.loading=false
           },3000)
           
